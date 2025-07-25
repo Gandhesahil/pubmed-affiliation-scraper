@@ -1,24 +1,77 @@
-# 🔬 PubMed Company Paper Scraper
+# PubMed Affiliation Scraper
 
-This is a Python command-line tool I built that searches for research papers on PubMed using any user query. It filters out papers that have at least one author from a pharmaceutical or biotech company, and saves the result in a CSV file.
-
----
-
-## 🚀 What It Can Do
-
-- You can search PubMed using any keyword or query.
-- It checks each paper’s author affiliations and picks the ones from companies (like Pfizer, Moderna, etc.).
-- It tries to extract the corresponding author’s email address.
-- It gives you the output as a CSV file (or prints to the screen if no file is given).
-- You can also use the `--debug` option to see what's happening in the background.
+This Python-based CLI tool searches for research papers using the [PubMed API](https://www.ncbi.nlm.nih.gov/home/develop/api/), identifies papers that include at least one company-affiliated author (based on affiliation strings), and exports the results to a CSV file.
 
 ---
 
-## ⚙️ How to Use It
+## 🔧 How the Code is Organized
 
-### Step 1: Install Dependencies
+pubmed_scraper/
+├──.git/
+├── src/
+│   └── pubmed_scraper/
+│       ├── __pycache__/
+│       ├── __init__.py
+│       ├── api.py             
+│       ├── parser.py         
+│       ├── writer.py      
+│       └── main.py     
+├── tests/
+├── poetry.lock 
+├── README.md
+├── pyproject.toml
+├── results.csv
 
-First, make sure you have [Poetry](https://python-poetry.org/docs/) installed. Then run:
 
+
+---
+
+## ⚙️ Installation & Execution
+
+### 1. ✅ Prerequisites
+- Python 3.8+
+- Poetry (Install using [this guide](https://python-poetry.org/docs/#installation))
+
+### 2. 🧱 Clone the Repository
 ```bash
-poetry install
+git clone https://github.com/your-username/pubmed-affiliation-scraper.git
+cd pubmed-affiliation-scraper
+
+
+3.📦 Install Dependencies Using Poetry
+     -> poetry install
+
+4.🚀 Run the Tool
+     -> poetry run get-papers-list "covid vaccine" -f results.csv debug
+
+
+
+---
+
+
+🛠 Tools & Libraries Used
+✅ Programming Tools:
+Poetry — for dependency and package management.
+
+Python Typer — to build the command-line interface.
+
+Requests — for making HTTP requests to the PubMed API.
+
+xmltodict — for parsing XML responses from PubMed.
+
+Python Standard Library — for CSV writing and OS operations.
+
+🤖 Language Models:
+This project was built with step-by-step guidance from OpenAI ChatGPT to:
+
+Understand the PubMed API
+
+Set up Poetry environment
+
+Structure modular Python code
+
+Create an interactive CLI
+
+Filter company-affiliated papers
+
+Generate this documentation
